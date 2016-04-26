@@ -23,11 +23,8 @@ public class boot {
 			switch(i)
 			{
 		    	case 1:
-		    		System.out.print("Digite o que esta buscando: ");
-		    		s=entrada.nextLine();
-		    		lista=agenda.search(s);
-		    		s=agenda.select(lista);
-		            agenda.ler(s);
+		    		s=agenda.searchcompleto();
+		    		agenda.ler(s);
 		    		break;
 		    
 		    	case 2:
@@ -41,18 +38,12 @@ public class boot {
 		            break;
 		    
 		    	case 3:
-		    		System.out.print("Digite o que esta buscando: ");
-		    		s=entrada.nextLine();
-		    		lista = agenda.search(s);
-		    		s=agenda.select(lista);
+		    		s=agenda.searchcompleto();
 		    		agenda.editar(s);
 		    		break;
 		    
 		    	case 4:
-		    		System.out.print("Digite o que esta buscando: ");
-		    		s=entrada.nextLine();
-		    		lista = agenda.search(s);
-		    		s=agenda.select(lista);
+		    		s=agenda.searchcompleto();
 		    		agenda.remover(s);
 		    		break;
 		    	
