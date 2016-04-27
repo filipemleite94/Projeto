@@ -30,7 +30,7 @@ public class Agenda {
 		FileReader fr;
 		BufferedReader br;
 		String s1, s2;
-		boolean match=false;
+		boolean match = false;
 		try {
 			File file = new File("temp42523322323.txt");
 			try {
@@ -50,40 +50,52 @@ public class Agenda {
 			ArrayList<String> pathlista = new ArrayList<String>();
 			for (i = 0; i < tamanho; i++) {
 				pathlista.add(lista[i].getName());
-				System.out.println("\n"+pathlista.get(i));
 			}
-			for(i = 0; i<pathlista.size(); i++){
-				for(int count=0; count<pathlista.length; i++)
-					
-				match = true;
-				file = new File(pathlista.get(i));
-				fr = new FileReader(file);
-				br = new BufferedReader(fr);
-				for(stmeta = new StringTokenizer(meta); stmeta.hasMoreElements()&&match==true;){
-					match=false;
-					s = stmeta.nextToken();
-					for(stfilenome = new StringTokenizer(br.readLine()); stfilenome.hasMoreElements()&&match==false;){
-						stfilenome.nextToken();
-						if(s.equals(stfilenome))
-							match=true;
-					}
-					for(stfiledata = new StringTokenizer(br.readLine()); stfiledata.hasMoreElements()&&match==false;){
-						stfiledata.nextToken();
-						if(s.equals(stfiledata))
-							match=true;
-					}
-					for(stfilemeta = new StringTokenizer(br.readLine()); stfilemeta.hasMoreElements()&&match==false;){
-						stfilemeta.nextToken();
-						if(s.equals(stfilemeta))
-							match=true;
-					}
-					if (match==false){
-						pathlista.remove(i);
-						i--;
+			if (meta != "") {
+				for (i = 0; i < pathlista.size(); i++, br.close()) {
+					match = true;
+					file = new File(pathlista.get(i));
+					fr = new FileReader(file);
+					br = new BufferedReader(fr);
+
+					for (stmeta = new StringTokenizer(meta); stmeta.hasMoreElements() && match == true;) {
+						if (match == true) {
+							fr = new FileReader(file);
+							br = new BufferedReader(fr);
+						}
+						match = false;
+						s = stmeta.nextToken();
+						try {
+							for (stfilenome = new StringTokenizer(br.readLine()); stfilenome.hasMoreElements()
+									&& match == false;) {
+								s2 = stfilenome.nextToken();
+								if (s.equals(s2))
+									match = true;
+							}
+							for (stfiledata = new StringTokenizer(br.readLine()); stfiledata.hasMoreElements()
+									&& match == false;) {
+								s2 = stfiledata.nextToken();
+								if (s.equals(s2))
+									match = true;
+							}
+							for (stfilemeta = new StringTokenizer(br.readLine()); stfilemeta.hasMoreElements()
+									&& match == false;) {
+								s2 = stfilemeta.nextToken();
+								if (s.equals(s2))
+									match = true;
+							}
+						} catch (java.lang.NullPointerException e) {
+							System.out.println();
+						}
+						;
+						if (match == false) {
+							pathlista.remove(i);
+							i--;
+						}
 					}
 				}
 			}
-			S=pathlista.toArray(new String[pathlista.size()]);
+			S = pathlista.toArray(new String[pathlista.size()]);
 			return S;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -91,9 +103,6 @@ public class Agenda {
 		return S;
 	}
 
-	public String select(String[] lista){	
-	}
-	
 	public String save(String name, String meta, String text, String data) {
 		String path = null;
 		try {
