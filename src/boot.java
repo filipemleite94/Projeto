@@ -10,7 +10,7 @@ public class boot {
 	static String[] lista;
 	
 	public static void main(String[] args) {
-		do{
+/*		do{
 			System.out.println("Seja bem vindo a sua agenda, o que deseja fazer?");
 			System.out.println("(1) Ver anotacao antiga");
 			System.out.println("(2) Fazer uma nova anotacao");
@@ -56,6 +56,6 @@ public class boot {
 		            System.out.println("Digite um numero valido!");
 			}
 		}while (i!=5);
-	}
-
-}
+	}*/
+		agenda.save("Spider", "aranha2", "Spider-Aranha", "Spiderdate");
+}}

@@ -37,7 +37,7 @@ public class Agenda {
 				file.createNewFile();
 				FileWriter fw = new FileWriter(file);
 				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(name + "\n" + data + "\n" + name + " " + data + " " + meta + "\n"+text);
+				bw.write(name + "\r\n" + data + "\r\n" + name + " " + data + " " + meta + "\r\n"+text);
 				bw.flush();
 				bw.close();
 				file2.delete();
@@ -48,7 +48,7 @@ public class Agenda {
 				file2.createNewFile();
 				FileWriter fw = new FileWriter(file2);
 				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(name + "\n" + data + "\n" + name + " " + data + " " + meta + "\n"+text);
+				bw.write(name + "\r\n" + data + "\r\n" + name + " " + data + " " + meta + "\r\n"+text);
 				bw.flush();
 				bw.close();
 				path= file.getName();
