@@ -11,19 +11,13 @@ import javax.swing.*;
 
 
 public class boot extends JFrame implements ActionListener {
-<<<<<<< HEAD
-	/*  Declare TextAreas, JList, Buttons, etc  */
-=======
 
-	/* Declare TextAreas, JList, Buttons, etc */
->>>>>>> fcf39aff621b0caaba171d5317664db47b5cfaf9
 	JTextArea jtSearch, jtName, jtText, jtMetaTag;
 	JList jlList;
 	JButton jbSearch, jbRemove, jbOpen, jbNew, jbSave;
 	JLabel jlSearch, jlName, jlTag, jlNote;
 	JScrollPane jsText;
-	
-<<<<<<< HEAD
+	Agenda Ag;
 	
 	public boot(){
 		setSize(1250,750);
@@ -98,18 +92,7 @@ public class boot extends JFrame implements ActionListener {
         getContentPane().add(jbNew);
         getContentPane().add(jbSave);
 	}
-	
-
-	public static void main(String[] args){
-/*		Agenda agenda = new Agenda();;
-		String[] S;
-		S=agenda.search("");
-		System.out.println(S[0]);
-		System.out.println(S[1]);
-		System.out.println(S[2]);*/ 
-=======
-	Agenda Ag = new Agenda();
-
+		
 	public boot() {
 		setSize(1250, 750);
 		setTitle("Notes");
@@ -184,7 +167,12 @@ public class boot extends JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) {
->>>>>>> fcf39aff621b0caaba171d5317664db47b5cfaf9
+		/*		Agenda agenda = new Agenda();;
+		String[] S;
+		S=agenda.search("");
+		System.out.println(S[0]);
+		System.out.println(S[1]);
+		System.out.println(S[2]);*/ 
 		boot b = new boot();
 		b.setVisible(true);
 	}
@@ -194,8 +182,6 @@ public class boot extends JFrame implements ActionListener {
 		Object source = e.getSource();
 		if (source == jbSearch) {
 
-<<<<<<< HEAD
-=======
 		}
 		if (source == jbRemove) {
 
@@ -211,6 +197,5 @@ public class boot extends JFrame implements ActionListener {
 		if (source == jbSave) {
 			Ag.save(jtName.getText(), jtMetaTag.getText(), jtText.getText(), new SimpleDateFormat("yyyy/MM/dd HH:mm:ss").format(new Date()));
 		}				
->>>>>>> fcf39aff621b0caaba171d5317664db47b5cfaf9
 	}
 }

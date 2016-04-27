@@ -29,7 +29,7 @@ public class Agenda {
 		StringTokenizer stmeta, stfilenome, stfiledata, stfilemeta;
 		FileReader fr;
 		BufferedReader br;
-		String s1, s2;
+		String s2;
 		boolean match = false;
 		try {
 			File file = new File("temp42523322323.txt");
@@ -106,7 +106,7 @@ public class Agenda {
 	public String save(String name, String meta, String text, String data) {
 		String path = null;
 		try {
-			File file = new File(name + data + "temp5454.txt");
+			File file = new File(name + data + "temp5454asdadasdfsdfdgfgfhjhjfghjfgkghfg.txt");
 			File file2 = new File(name + ".txt");
 			path= file2.getName();
 			if (file2.exists()) {
@@ -134,16 +134,21 @@ public class Agenda {
 	return path;
 	}
 	
-	public String open(String name) {
+	public String[] open(String name) {
 		int i = 0, b;
 		char[] a;
-		String n = null;
+		String[] S = new String[4], n= null;
 		try {
 			File file = new File(name);
 			FileReader fr = new FileReader(file);
 			BufferedReader br = new BufferedReader(fr);
-			for (; i < 3; i++)
-				br.readLine();
+			for (i=0; i < 3; i++){
+				try{
+					S[i]=br.readLine();
+				}catch(java.lang.NullPointerException e){
+					S[i]="";
+				}
+			}
 			for (i = 0, b = br.read(); b != -1; i++, b = br.read())
 				;
 			br.close();
@@ -157,10 +162,16 @@ public class Agenda {
 				a[i] = (char) b;
 			String s = new String(a);
 			br.close();
-			return s;
+			S[4]= ""+s;
+			return S;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		return n;
+	}
+	
+	public void remover (String name){
+		File file = new File(name);
+		file.delete();
 	}
 }
