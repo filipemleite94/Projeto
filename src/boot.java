@@ -57,5 +57,7 @@ public class boot {
 			}
 		}while (i!=5);
 	}*/
-		agenda.save("Spider", "aranha2", "Spider-Aranha", "Spiderdate");
+		s2=agenda.save("Spider", "aran nha subindo na parede", "Spiderdate with spiders girlfriend\r\nlalalalas2s2s2\r\nlalala","Spider-Aranha");
+		s=agenda.open(s2);
+		System.out.print(s);
 }}
