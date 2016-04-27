@@ -1,4 +1,3 @@
-import java.util.Scanner;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -8,7 +7,7 @@ public class boot extends JFrame implements ActionListener {
 	/*  Declare TextAreas, JList, Buttons, etc  */
 	JTextArea jtSearch, jtName, jtText, jtMetaTag;
 	JList jlList;
-	JButton jbSearch, jbRemove, jbOpen, jbNew, jbSave, jbErase;
+	JButton jbSearch, jbRemove, jbOpen, jbNew, jbSave;
 	JLabel jlSearch, jlName, jlTag, jlNote;
 	JScrollPane jsText;
 	
@@ -23,95 +22,81 @@ public class boot extends JFrame implements ActionListener {
 	
 	
 	public boot(){
-		setSize(800,600);
+		setSize(1250,750);
 		setTitle("Notes"); 
 		setDefaultCloseOperation(EXIT_ON_CLOSE); //Ends process when closed
-        //setResizable(false); //It is not allowed to resize the Layout
+        setResizable(false); //It is not allowed to resize the Layout
         
         jtSearch = new JTextArea(20,180);
-        jtName = new JTextArea(20,450);
-        jtText = new JTextArea(180,500);
+        jtSearch.setBounds(20, 40, 320, 25);
+        jtSearch.setFont(new Font("SansSerif",Font.BOLD, 20));
+        jtName = new JTextArea(20,350);
+        jtName.setBounds(600, 10, 350, 25);
+        jtName.setFont(new Font("SansSerif",Font.BOLD, 20));
+        jtText = new JTextArea(50,20);
+        jtText.setFont(new Font("SansSerif",Font.BOLD, 20));
         jtMetaTag = new JTextArea(20,180);
+        jtMetaTag.setBounds(850, 600, 350, 25);
         
         jlList = new JList();
         jlList.setSize(new Dimension(80,180));
+        jlList.setBounds(20, 80, 420, 495);
+        jlList.setAutoscrolls(true);
         
-        jlSearch = new JLabel("Search",Label.LEFT);
-        jlSearch.setBounds(1, 1, jlSearch.getWidth(), jlSearch.getHeight());
-        jlName = new JLabel("Nome",Label.LEFT);
-        jlName.setBounds(1, 100, 100,100);
+        jlSearch = new JLabel("Search");
+        jlSearch.setAlignmentX(LEFT_ALIGNMENT);
+        jlSearch.setBounds(20, 10, 80, 25);
+        jlName = new JLabel("Name",Label.LEFT);
+        jlName.setBounds(510, 10, 70, 25);
         jlTag = new JLabel("Tag",Label.LEFT);
+        jlTag.setBounds(750, 600, 80, 25);
         jlNote = new JLabel("Note",Label.LEFT);
+        jlNote.setBounds(505, 40, 70, 25);
         jlSearch.setFont(new Font("SansSerif",Font.BOLD, 20));
         jlName.setFont(new Font("SansSerif",Font.BOLD, 20));
         jlTag.setFont(new Font("SansSerif",Font.BOLD, 20));
         jlNote.setFont(new Font("SansSerif",Font.BOLD, 20));
         
         jbSearch = new JButton("Search");
+        jbSearch.setBounds(350, 40, 90, 25);
         jbSearch.addActionListener(this);
         jbRemove = new JButton("Remove");
+        jbRemove.setBounds(20, 600, 90, 25);
         jbRemove.addActionListener(this);
         jbOpen = new JButton("Open");
+        jbOpen.setBounds(350, 600, 90, 25);
         jbOpen.addActionListener(this);
         jbNew = new JButton("New");
+        jbNew.setBounds(1000, 650, 80, 25);
         jbNew.addActionListener(this);
         jbSave = new JButton("Save");
+        jbSave.setBounds(1100, 650, 80, 25);
         jbSave.addActionListener(this);
-        jbErase = new JButton("Erase");
-        jbErase.addActionListener(this);
+
         
         jsText = new JScrollPane(jtText);
+        jsText.setBounds(515, 75, 700, 500);
         
-        getContentPane().setLayout(new GridLayout(5,5));
+        getContentPane().setLayout(null);
         
-        //getContentPane().setLayout(new FlowLayout(FlowLayout.RIGHT));
         getContentPane().add(jlSearch);
-        //jlSearch.setBounds(1, 1, jlSearch.getWidth(), jlSearch.getHeight());
-        
         getContentPane().add(jlName);
-        //jlName.setBounds(100, 1, jlName.getWidth(), jlName.getHeight());
-        
         getContentPane().add(jtName);
-        jtName.setBounds(150, 1, jtName.getWidth(), jtName.getHeight());
-        
         getContentPane().add(jtSearch);
-        jtSearch.setBounds(1, 30, jtSearch.getWidth(), jtSearch.getHeight());
-        
         getContentPane().add(jbSearch);
-        jbSearch.setBounds(30, 30, jbSearch.getWidth(), jbSearch.getHeight());
-        
         getContentPane().add(jlNote);
-        jlNote.setBounds(100, 30, jlNote.getWidth(), jlNote.getHeight());
-        
         getContentPane().add(jlList);
-        jlList.setBounds(1, 60, jlList.getWidth(), jlList.getHeight());
-        
         getContentPane().add(jsText);
-        jsText.setBounds(100, 60, jsText.getWidth(), jsText.getHeight());
-        
         getContentPane().add(jbRemove);
-        jbRemove.setBounds(1, 250, jbRemove.getWidth(), jbRemove.getHeight());
-        
         getContentPane().add(jbOpen);
-        jbOpen.setBounds(30, 270, jbOpen.getWidth(), jbOpen.getHeight());
-        
         getContentPane().add(jlTag);
-        jlTag.setBounds(200, 250, jlTag.getWidth(), jlTag.getHeight());
-        
         getContentPane().add(jtMetaTag);
-        jtMetaTag.setBounds(230, 250, jtMetaTag.getWidth(), jtMetaTag.getHeight());
-        
         getContentPane().add(jbNew);
-        jbNew.setBounds(230, 270, jbNew.getWidth(), jbNew.getHeight());
-        
         getContentPane().add(jbSave);
-        jbSave.setBounds(230, 270, jbSave.getWidth(), jbSave.getHeight());
-        
 	}
 	
 	
 	
-<<<<<<< HEAD
 	
 
 	public static void main(String[] args){
@@ -176,11 +161,3 @@ public class boot extends JFrame implements ActionListener {
 	}
 
 }
-=======
-		}while (i!=5);
-	}*/
-		s2=agenda.save("Spider", "aran nha subindo na parede", "Spiderdate with spiders girlfriend\r\nlalalalas2s2s2\r\nlalala","Spider-Aranha");
-		s=agenda.open(s2);
-		System.out.print(s);
-}}
->>>>>>> 352e3648e9698ce022ce064ad851ba037bcf72c8
