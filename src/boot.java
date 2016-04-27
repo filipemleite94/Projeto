@@ -13,7 +13,7 @@ import javax.swing.*;
 public class boot extends JFrame implements ActionListener {
 
 	JTextArea jtSearch, jtName, jtText, jtMetaTag;
-	JList jlList;
+	JList<String> jlList;
 	JButton jbSearch, jbRemove, jbOpen, jbNew, jbSave;
 	JLabel jlSearch, jlName, jlTag, jlNote;
 	JScrollPane jsText;
@@ -111,7 +111,7 @@ public class boot extends JFrame implements ActionListener {
 		jtText.setFont(new Font("SansSerif", Font.BOLD, 20));
 		jtMetaTag.setFont(new Font("SansSerif", Font.BOLD, 20));
 
-		jlList = new JList();
+		jlList = new JList<String>();
 		jlList.setSize(new Dimension(80, 180));
 		jlList.setBounds(20, 80, 420, 495);
 		jlList.setAutoscrolls(true);
