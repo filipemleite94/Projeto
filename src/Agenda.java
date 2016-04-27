@@ -15,14 +15,6 @@ public class Agenda {
 	String[] lista;
 	Scanner entrada = new Scanner(System.in);
 
-	public String searchcompleto() {
-		System.out.print("Digite o que esta buscando: ");
-		s = entrada.nextLine();
-		lista = agenda.search(s);
-		s = agenda.select(lista);
-		return s;
-	}
-
 	public String[] search(String meta) {
 		int i = 0, tamanho = 0;
 		String[] S = null;
@@ -162,7 +154,7 @@ public class Agenda {
 				a[i] = (char) b;
 			String s = new String(a);
 			br.close();
-			S[4]= ""+s;
+			S[3]= ""+s;
 			return S;
 		} catch (IOException e) {
 			e.printStackTrace();
