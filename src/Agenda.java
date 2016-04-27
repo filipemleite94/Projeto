@@ -5,26 +5,93 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.FilenameFilter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class Agenda {
 	String s;
 	String[] lista;
 	Scanner entrada = new Scanner(System.in);
-	
-	public String searchcompleto(){
+
+	public String searchcompleto() {
 		System.out.print("Digite o que esta buscando: ");
-		s=entrada.nextLine();
-		lista=agenda.search(s);
-		s=agenda.select(lista);
+		s = entrada.nextLine();
+		lista = agenda.search(s);
+		s = agenda.select(lista);
 		return s;
 	}
-	
-	public String[] search(String s){	
-		
+
+	public String[] search(String meta) {
+		int i = 0, tamanho = 0;
+		String[] S = null;
+		StringTokenizer stmeta, stfilenome, stfiledata, stfilemeta;
+		FileReader fr;
+		BufferedReader br;
+		String s1, s2;
+		boolean match=false;
+		try {
+			File file = new File("temp42523322323.txt");
+			try {
+				file.createNewFile();
+				s = file.getAbsoluteFile().getParentFile().getAbsolutePath();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			file.delete();
+			File dir = new File(s);
+			File[] lista = dir.listFiles(new FilenameFilter() {
+				public boolean accept(File dir, String filename) {
+					return filename.endsWith(".txt");
+				}
+			});
+			tamanho = lista.length;
+			ArrayList<String> pathlista = new ArrayList<String>();
+			for (i = 0; i < tamanho; i++) {
+				pathlista.add(lista[i].getName());
+				System.out.println("\n"+pathlista.get(i));
+			}
+			for(i = 0; i<pathlista.size(); i++){
+				for(int count=0; count<pathlista.length; i++)
+					
+				match = true;
+				file = new File(pathlista.get(i));
+				fr = new FileReader(file);
+				br = new BufferedReader(fr);
+				for(stmeta = new StringTokenizer(meta); stmeta.hasMoreElements()&&match==true;){
+					match=false;
+					s = stmeta.nextToken();
+					for(stfilenome = new StringTokenizer(br.readLine()); stfilenome.hasMoreElements()&&match==false;){
+						stfilenome.nextToken();
+						if(s.equals(stfilenome))
+							match=true;
+					}
+					for(stfiledata = new StringTokenizer(br.readLine()); stfiledata.hasMoreElements()&&match==false;){
+						stfiledata.nextToken();
+						if(s.equals(stfiledata))
+							match=true;
+					}
+					for(stfilemeta = new StringTokenizer(br.readLine()); stfilemeta.hasMoreElements()&&match==false;){
+						stfilemeta.nextToken();
+						if(s.equals(stfilemeta))
+							match=true;
+					}
+					if (match==false){
+						pathlista.remove(i);
+						i--;
+					}
+				}
+			}
+			S=pathlista.toArray(new String[pathlista.size()]);
+			return S;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return S;
 	}
-	
+
 	public String select(String[] lista){	
-		
 	}
 	
 	public String save(String name, String meta, String text, String data) {
@@ -58,29 +125,30 @@ public class Agenda {
 	return path;
 	}
 	
-	public String open(String name){
-		int i=0, b;
+	public String open(String name) {
+		int i = 0, b;
 		char[] a;
-		String n=null;
+		String n = null;
 		try {
-		File file = new File(name);
-		FileReader fr = new FileReader(file);
-		BufferedReader br = new BufferedReader(fr);
-		for(;i<3;i++)
-			br.readLine();
-		for(i=0, b=br.read();b!=-1;i++, b=br.read());
-		br.close();
-		file=new File(name);
-		fr=new FileReader(file);
-		br=new BufferedReader(fr);
-		a=new char[i];
-		for(i=0;i<3;i++)
-			br.readLine();
-		for(i=0, b=br.read();b!=-1;i++, b=br.read())
-			a[i]=(char) b;
-		String s = new String(a);
-		br.close();
-		return s;
+			File file = new File(name);
+			FileReader fr = new FileReader(file);
+			BufferedReader br = new BufferedReader(fr);
+			for (; i < 3; i++)
+				br.readLine();
+			for (i = 0, b = br.read(); b != -1; i++, b = br.read())
+				;
+			br.close();
+			file = new File(name);
+			fr = new FileReader(file);
+			br = new BufferedReader(fr);
+			a = new char[i];
+			for (i = 0; i < 3; i++)
+				br.readLine();
+			for (i = 0, b = br.read(); b != -1; i++, b = br.read())
+				a[i] = (char) b;
+			String s = new String(a);
+			br.close();
+			return s;
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
