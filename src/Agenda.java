@@ -19,8 +19,8 @@ public class Agenda {
 		int i = 0, tamanho = 0;
 		String[] S = null;
 		StringTokenizer stmeta, stfilenome, stfiledata, stfilemeta;
-		FileReader fr;
-		BufferedReader br;
+		FileReader fr=null;
+		BufferedReader br=null;
 		String s2;
 		boolean match = false;
 		try {
@@ -44,17 +44,17 @@ public class Agenda {
 				pathlista.add(lista[i].getName());
 			}
 			if (meta != "") {
-				for (i = 0; i < pathlista.size(); i++, br.close()) {
+				for (i = 0; i < pathlista.size(); i++) {
 					match = true;
 					file = new File(pathlista.get(i));
-					fr = new FileReader(file);
-					br = new BufferedReader(fr);
 
-					for (stmeta = new StringTokenizer(meta); stmeta.hasMoreElements() && match == true;) {
-						if (match == true) {
-							fr = new FileReader(file);
-							br = new BufferedReader(fr);
-						}
+					for (stmeta = new StringTokenizer(meta); stmeta.hasMoreElements() && match == true;) {						
+						try{
+							br.close();
+							fr.close();
+						} catch (java.lang.NullPointerException e){};
+						fr = new FileReader(file);
+						br = new BufferedReader(fr);
 						match = false;
 						s = stmeta.nextToken();
 						try {
@@ -85,6 +85,10 @@ public class Agenda {
 							i--;
 						}
 					}
+					try{
+						br.close();
+						fr.close();
+					}catch(java.lang.NullPointerException e){};
 				}
 			}
 			S = pathlista.toArray(new String[pathlista.size()]);
@@ -164,6 +168,8 @@ public class Agenda {
 	
 	public void remover (String name){
 		File file = new File(name);
-		file.delete();
+		try{
+			file.delete();
+		}catch(java.lang.NullPointerException e){};
 	}
 }
