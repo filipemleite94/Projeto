@@ -1,3 +1,5 @@
+import java.io.File;
+import java.io.IOException;
 import java.util.Scanner;
 
 public class boot {
@@ -7,7 +9,7 @@ public class boot {
 	static String s2 = new String();
 	static String s3 = new String();
 	static Agenda agenda = new Agenda();
-	static String[] lista;
+	static String[] S;
 	
 	public static void main(String[] args) {
 /*		do{
@@ -60,4 +62,7 @@ public class boot {
 		s2=agenda.save("Spider", "aran nha subindo na parede", "Spiderdate with spiders girlfriend\r\nlalalalas2s2s2\r\nlalala","Spider-Aranha");
 		s=agenda.open(s2);
 		System.out.print(s);
-}}
+		S=agenda.search("aran");
+		System.out.println("Tamanho: " + S.length + " Nome: " + S[0] );
+	}
+}
