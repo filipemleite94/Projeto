@@ -111,6 +111,7 @@ public class boot extends JFrame implements ActionListener {
 	
 	
 	
+<<<<<<< HEAD
 	
 
 	public static void main(String[] args){
@@ -118,6 +119,10 @@ public class boot extends JFrame implements ActionListener {
 		b.setVisible(true);
 		
 		/*do {
+=======
+	public static void main(String[] args) {
+/*		do{
+>>>>>>> 352e3648e9698ce022ce064ad851ba037bcf72c8
 			System.out.println("Seja bem vindo a sua agenda, o que deseja fazer?");
 			System.out.println("(1) Ver anotacao antiga");
 			System.out.println("(2) Fazer uma nova anotacao");
@@ -161,6 +166,7 @@ public class boot extends JFrame implements ActionListener {
 			default:
 				System.out.println("Digite um numero valido!");
 			}
+<<<<<<< HEAD
 		} while (i != 5);*/
 	}
 
@@ -170,3 +176,11 @@ public class boot extends JFrame implements ActionListener {
 	}
 
 }
+=======
+		}while (i!=5);
+	}*/
+		s2=agenda.save("Spider", "aran nha subindo na parede", "Spiderdate with spiders girlfriend\r\nlalalalas2s2s2\r\nlalala","Spider-Aranha");
+		s=agenda.open(s2);
+		System.out.print(s);
+}}
+>>>>>>> 352e3648e9698ce022ce064ad851ba037bcf72c8
