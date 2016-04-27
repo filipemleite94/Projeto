@@ -125,7 +125,7 @@ public class Agenda {
 	return path;
 	}
 	
-	public String open(String name) {
+	public String[] open(String name) {
 		int i = 0, b;
 		char[] a;
 		String n = null;
