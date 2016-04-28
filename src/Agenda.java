@@ -102,16 +102,17 @@ public class Agenda {
 	public String save(String name, String meta, String text, String data) {
 		String path = null;
 		try {
-			File file = new File(name + data + "temp5454asdadasdfsdfdgfgfhjhjfghjfgkghfg.txt");
+			File file = new File(name  + "temp54hjfgkghfg.txt");
 			File file2 = new File(name + ".txt");
 			path= file2.getName();
 			if (file2.exists()) {
 				file.createNewFile();
 				FileWriter fw = new FileWriter(file);
 				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(name + "\r\n" + data + "\r\n" + name + " " + data + " " + meta + "\r\n"+text);
+				bw.write(name + "\r\n" + data + "\r\n" +  meta + "\r\n"+text);
 				bw.flush();
 				bw.close();
+				fw.close();
 				file2.delete();
 				file2=new File(name + ".txt");
 				file.renameTo(file2);
@@ -120,9 +121,10 @@ public class Agenda {
 				file2.createNewFile();
 				FileWriter fw = new FileWriter(file2);
 				BufferedWriter bw = new BufferedWriter(fw);
-				bw.write(name + "\r\n" + data + "\r\n" + " " + meta + "\r\n"+text);
+				bw.write(name + "\r\n" + data + "\r\n" +  meta + "\r\n"+text);
 				bw.flush();
 				bw.close();
+				fw.close();
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
